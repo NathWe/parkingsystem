@@ -3,7 +3,11 @@ package com.parkit.parkingsystem.config;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class DataBaseConfig {
 
@@ -21,7 +25,7 @@ public class DataBaseConfig {
             try {
                 con.close();
                 logger.info("Closing DB connection");
-            } catch (SQLException e) {
+            } catch (final SQLException e) {
                 logger.error("Error while closing connection",e);
             }
         }
@@ -32,7 +36,7 @@ public class DataBaseConfig {
             try {
                 ps.close();
                 logger.info("Closing Prepared Statement");
-            } catch (SQLException e) {
+            } catch (final SQLException e) {
                 logger.error("Error while closing prepared statement",e);
             }
         }
@@ -43,7 +47,7 @@ public class DataBaseConfig {
             try {
                 rs.close();
                 logger.info("Closing Result Set");
-            } catch (SQLException e) {
+            } catch (final SQLException e) {
                 logger.error("Error while closing result set",e);
             }
         }

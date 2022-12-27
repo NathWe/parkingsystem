@@ -1,0 +1,107 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ---------------------< com.parkit:parking-system >----------------------
+[INFO] Building parking-system 1.0-SNAPSHOT
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ parking-system ---
+[INFO] Deleting C:\Users\natha\git\parkingsystem\target
+[INFO] 
+[INFO] --- jacoco-maven-plugin:0.8.5:prepare-agent (default) @ parking-system ---
+[INFO] argLine set to -javaagent:C:\\Users\\natha\\.m2\\repository\\org\\jacoco\\org.jacoco.agent\\0.8.5\\org.jacoco.agent-0.8.5-runtime.jar=destfile=C:\\Users\\natha\\git\\parkingsystem\\target\\jacoco.exec
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ parking-system ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 2 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:compile (default-compile) @ parking-system ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 13 source files to C:\Users\natha\git\parkingsystem\target\classes
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ parking-system ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory C:\Users\natha\git\parkingsystem\src\test\resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:testCompile (default-testCompile) @ parking-system ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 5 source files to C:\Users\natha\git\parkingsystem\target\test-classes
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.21.0:test (default-test) @ parking-system ---
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running com.parkit.parkingsystem.FareCalculatorServiceTest
+2022-12-27 11:16:27 [main] INFO  DataBaseConfig:13 - Create DB connection
+2022-12-27 11:16:42 [main] INFO  DataBaseConfig:45 - Closing Result Set
+2022-12-27 11:16:42 [main] INFO  DataBaseConfig:34 - Closing Prepared Statement
+2022-12-27 11:16:42 [main] INFO  DataBaseConfig:23 - Closing DB connection
+2022-12-27 11:16:42 [main] INFO  DataBaseConfig:13 - Create DB connection
+2022-12-27 11:16:42 [main] INFO  DataBaseConfig:45 - Closing Result Set
+2022-12-27 11:16:42 [main] INFO  DataBaseConfig:34 - Closing Prepared Statement
+2022-12-27 11:16:42 [main] INFO  DataBaseConfig:23 - Closing DB connection
+2022-12-27 11:16:42 [main] INFO  DataBaseConfig:13 - Create DB connection
+2022-12-27 11:16:42 [main] INFO  DataBaseConfig:45 - Closing Result Set
+2022-12-27 11:16:42 [main] INFO  DataBaseConfig:34 - Closing Prepared Statement
+2022-12-27 11:16:42 [main] INFO  DataBaseConfig:23 - Closing DB connection
+2022-12-27 11:16:42 [main] INFO  DataBaseConfig:13 - Create DB connection
+2022-12-27 11:16:42 [main] INFO  DataBaseConfig:45 - Closing Result Set
+2022-12-27 11:16:42 [main] INFO  DataBaseConfig:34 - Closing Prepared Statement
+2022-12-27 11:16:42 [main] INFO  DataBaseConfig:23 - Closing DB connection
+2022-12-27 11:16:42 [main] INFO  DataBaseConfig:13 - Create DB connection
+2022-12-27 11:16:42 [main] INFO  DataBaseConfig:45 - Closing Result Set
+2022-12-27 11:16:42 [main] INFO  DataBaseConfig:34 - Closing Prepared Statement
+2022-12-27 11:16:42 [main] INFO  DataBaseConfig:23 - Closing DB connection
+2022-12-27 11:16:42 [main] INFO  DataBaseConfig:13 - Create DB connection
+2022-12-27 11:16:42 [main] INFO  DataBaseConfig:45 - Closing Result Set
+2022-12-27 11:16:42 [main] INFO  DataBaseConfig:34 - Closing Prepared Statement
+2022-12-27 11:16:42 [main] INFO  DataBaseConfig:23 - Closing DB connection
+2022-12-27 11:16:42 [main] INFO  DataBaseConfig:13 - Create DB connection
+2022-12-27 11:16:42 [main] INFO  DataBaseConfig:45 - Closing Result Set
+2022-12-27 11:16:42 [main] INFO  DataBaseConfig:34 - Closing Prepared Statement
+2022-12-27 11:16:42 [main] INFO  DataBaseConfig:23 - Closing DB connection
+2022-12-27 11:16:42 [main] INFO  DataBaseConfig:13 - Create DB connection
+2022-12-27 11:16:42 [main] INFO  DataBaseConfig:45 - Closing Result Set
+2022-12-27 11:16:42 [main] INFO  DataBaseConfig:34 - Closing Prepared Statement
+2022-12-27 11:16:42 [main] INFO  DataBaseConfig:23 - Closing DB connection
+2022-12-27 11:16:42 [main] INFO  DataBaseConfig:13 - Create DB connection
+2022-12-27 11:16:42 [main] INFO  DataBaseConfig:45 - Closing Result Set
+2022-12-27 11:16:42 [main] INFO  DataBaseConfig:34 - Closing Prepared Statement
+2022-12-27 11:16:42 [main] INFO  DataBaseConfig:23 - Closing DB connection
+[INFO] Tests run: 11, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 24.914 s - in com.parkit.parkingsystem.FareCalculatorServiceTest
+[INFO] Running com.parkit.parkingsystem.ParkingServiceTest
+Please type the vehicle registration number and press enter key
+2022-12-27 11:16:49 [main] INFO  DataBaseConfig:13 - Create DB connection
+2022-12-27 11:16:49 [main] INFO  DataBaseConfig:45 - Closing Result Set
+2022-12-27 11:16:49 [main] INFO  DataBaseConfig:34 - Closing Prepared Statement
+2022-12-27 11:16:49 [main] INFO  DataBaseConfig:23 - Closing DB connection
+Please pay the parking fare:1.425
+Recorded out-time for vehicle number:ABCDEF is:Tue Dec 27 11:16:49 CET 2022
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s - in com.parkit.parkingsystem.ParkingServiceTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 12, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] 
+[INFO] --- jacoco-maven-plugin:0.8.5:report (jacoco-report) @ parking-system ---
+[INFO] Loading execution data file C:\Users\natha\git\parkingsystem\target\jacoco.exec
+[INFO] Analyzed bundle 'parking-system' with 13 classes
+[INFO] 
+[INFO] --- maven-jar-plugin:2.4:jar (default-jar) @ parking-system ---
+[INFO] Building jar: C:\Users\natha\git\parkingsystem\target\parking-system-1.0-SNAPSHOT.jar
+[INFO] 
+[INFO] --- maven-assembly-plugin:2.2-beta-5:single (default) @ parking-system ---
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  01:29 min
+[INFO] Finished at: 2022-12-27T11:17:00+01:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-assembly-plugin:2.2-beta-5:single (default) on project parking-system: Error reading assemblies: Descriptor with ID 'executable-jar-with-dependencies' not found -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException
