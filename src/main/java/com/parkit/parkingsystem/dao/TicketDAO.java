@@ -15,16 +15,20 @@ import java.sql.Timestamp;
 
 public class TicketDAO {
 
-    private static final Logger logger = LogManager.getLogger("TicketDAO");
+    private Logger logger = LogManager.getLogger("TicketDAO");
 
     public DataBaseConfig dataBaseConfig = new DataBaseConfig();
+    
+    Connection con = null;
+    PreparedStatement ps = null;
+    ResultSet rs = null;
 
 
 	public boolean saveTicket(Ticket ticket){
         Connection con = null;
         try {
             con = dataBaseConfig.getConnection();
-            PreparedStatement ps = con.prepareStatement(DBConstants.SAVE_TICKET);
+            ps = con.prepareStatement(DBConstants.SAVE_TICKET);
             //ID, PARKING_NUMBER, VEHICLE_REG_NUMBER, PRICE, IN_TIME, OUT_TIME)
             //ps.setInt(1,ticket.getId());
             ps.setInt(1,ticket.getParkingSpot().getId());
@@ -36,7 +40,19 @@ public class TicketDAO {
         }catch (final Exception ex){
             logger.error("Error fetching next available slot",ex);
         }finally {
-            dataBaseConfig.closeConnection(con);
+            try {
+            	if (ps != null)
+            		ps.close();
+            }catch (Exception e) {
+            	logger.error("Error close resource PreparedStatement",e);
+            }
+            
+            try {
+            	if (con != null)
+            		con.close();
+            }catch (Exception e) {
+            	logger.error("Error close resource connection", e);
+            }
         }
             return false;
         }
@@ -44,14 +60,14 @@ public class TicketDAO {
 
 
 	public Ticket getTicket(String vehicleRegNumber) {
-        Connection con = null;
+        
         Ticket ticket = null;
         try {
             con = dataBaseConfig.getConnection();
-            PreparedStatement ps = con.prepareStatement(DBConstants.GET_TICKET);
+            ps = con.prepareStatement(DBConstants.GET_TICKET);
             //ID, PARKING_NUMBER, VEHICLE_REG_NUMBER, PRICE, IN_TIME, OUT_TIME)
             ps.setString(1,vehicleRegNumber);
-            ResultSet rs = ps.executeQuery();
+            rs = ps.executeQuery();
             if(rs.next()){
                 ticket = new Ticket();
                 ParkingSpot parkingSpot = new ParkingSpot(rs.getInt(1), ParkingType.valueOf(rs.getString(6)),false);
@@ -61,34 +77,67 @@ public class TicketDAO {
                 ticket.setPrice(rs.getDouble(3));
                 ticket.setInTime(rs.getTimestamp(4));
                 ticket.setOutTime(rs.getTimestamp(5));
+                System.out.println("Ticket get");
             }
-            dataBaseConfig.closeResultSet(rs);
-            dataBaseConfig.closePreparedStatement(ps);
-            return ticket;
-        }catch (final Exception ex){
+
+        }catch (Exception ex){
             logger.error("Error fetching next available slot",ex);
-            return null;
         }finally {
-            dataBaseConfig.closeConnection(con);
-            
-        }
-    }
+        	 try {
+             	if (rs != null)
+             		rs.close();
+             }catch (Exception e) {
+             	logger.error("Error close resource resultuser",e);
+             }
+             
+        	 try {
+              	if (ps != null)
+              		ps.close();
+              }catch (Exception e) {
+              	logger.error("Error close resource PreparedStatement",e);
+              }
+             try {
+             	if (con != null)
+             		con.close();
+             }catch (Exception e) {
+             	logger.error("Error close resource connection",e);
+             }
+         }
+             return ticket;
+         }
+        
 
     public boolean updateTicket(Ticket ticket) {
-        Connection con = null;
+      
         try {
             con = dataBaseConfig.getConnection();
-            PreparedStatement ps = con.prepareStatement(DBConstants.UPDATE_TICKET);
+            ps = con.prepareStatement(DBConstants.UPDATE_TICKET);
             ps.setDouble(1, ticket.getPrice());
             ps.setTimestamp(2, new Timestamp(ticket.getOutTime().getTime()));
             ps.setInt(3,ticket.getId());
             ps.execute();
-            return true;
+            System.out.println("Ticket update");
+            
         }catch (final Exception ex){
             logger.error("Error saving ticket info",ex);
         }finally {
-            dataBaseConfig.closeConnection(con);
+       	 try {
+          	if (ps != null)
+          		ps.close();
+          }catch (Exception e) {
+          	logger.error("Error close resource PreparedStatement", e);
+          }
+    	 try {
+          	if (con != null)
+          		con.close();
+          }catch (Exception e) {
+          	logger.error("Error close resource connexion", e);
+          }
         }
+        
         return false;
+    }
+    public void setLogger(Logger testlogger) {
+    	this.logger = testlogger;
     }
 }
