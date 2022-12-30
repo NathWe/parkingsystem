@@ -22,10 +22,6 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.when;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.util.concurrent.TimeUnit;
 
 @ExtendWith(MockitoExtension.class)
 public class ParkingDataBaseIT {
@@ -47,9 +43,7 @@ public class ParkingDataBaseIT {
         dataBasePrepareService = new DataBasePrepareService();
     }
 
-	private Connection con;
-
-    @BeforeEach
+	@BeforeEach
     private void setUpPerTest() throws Exception {
         when(inputReaderUtil.readSelection()).thenReturn(1);
         when(inputReaderUtil.readVehicleRegistrationNumber()).thenReturn("ABCDEF");
@@ -62,7 +56,7 @@ public class ParkingDataBaseIT {
     }
     
     @Test
-	public void testParkingACar1() {
+	public void testParkingACar() {
 		final ParkingService parkingService = new ParkingService(inputReaderUtil, parkingSpotDAO, ticketDAO);
 		parkingService.processIncomingVehicle();
 
@@ -72,13 +66,12 @@ public class ParkingDataBaseIT {
 		final ParkingSpot parkingSpot = ticket.getParkingSpot();
 		assertFalse(parkingSpot.isAvailable());
 
-		// check that a ticket is actually saved in DB and Parking table is
-		// updated with availability
+		// check that a ticket is actually saved in DB and Parking table is updated with availability
 	}
 
 	@Test
-	public void testParkingLotExit1() {
-		testParkingACar1();
+	public void testParkingLotExit() {
+		testParkingACar();
 		final ParkingService parkingService = new ParkingService(inputReaderUtil, parkingSpotDAO, ticketDAO);
 		parkingService.processExitingVehicle();
 
@@ -86,8 +79,7 @@ public class ParkingDataBaseIT {
 		assertNotNull(ticket.getOutTime());
 		assertNotNull(ticket.getPrice());
 
-		// check that the fare generated and out time are populated correctly in
-		// the database
+		// check that the fare generated and out time are populated correctly in the database
 	}
 	
     }
