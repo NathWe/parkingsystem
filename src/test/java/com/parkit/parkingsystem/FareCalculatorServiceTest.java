@@ -165,12 +165,27 @@ public class FareCalculatorServiceTest {
 
 
 	@Test
+	public void calculateFareCarTwentyMinutes(){
+        Date inTime = new Date();
+        inTime.setTime( System.currentTimeMillis() - (  20 * 60 * 1000) );// 20 minutes parking time for car
+        Date outTime = new Date();
+        ParkingSpot parkingSpot = new ParkingSpot(1, ParkingType.CAR,false);
+
+        ticket.setInTime(inTime);
+        ticket.setOutTime(outTime);
+        ticket.setParkingSpot(parkingSpot);
+        ticket.setVehicleRegNumber("ABCDEF");
+        fareCalculatorService.calculateFare(ticket);
+        assertEquals((0), ticket.getPrice());
+    }
 	public void calculateFareCarWithDiscount(){
 				Date inTime = new Date();
 				inTime.setTime( System.currentTimeMillis() - (  60 * 60 * 1000) ); // Reduction for a car parked one hour
 				Date outTime = new Date();
 				ParkingSpot parkingSpot = new ParkingSpot(1, ParkingType.CAR,false);
 
+				
+				
 				ticket.setInTime(inTime);
 				ticket.setOutTime(outTime);
 				ticket.setParkingSpot(parkingSpot);
@@ -179,6 +194,20 @@ public class FareCalculatorServiceTest {
 				assertEquals((Fare.CAR_RATE_PER_MINUTES - (Fare.CAR_RATE_PER_MINUTES * 0.05))*60, ticket.getPrice());
 	}
 	@Test
+	 public void calculateFareBikeTwentyMinutes(){
+        Date inTime = new Date();
+        inTime.setTime( System.currentTimeMillis() - (  20 * 60 * 1000) ); // 20 minutes parking time for bike
+        Date outTime = new Date();
+        ParkingSpot parkingSpot = new ParkingSpot(1, ParkingType.BIKE,false);
+
+        ticket.setInTime(inTime);
+        ticket.setOutTime(outTime);
+        ticket.setParkingSpot(parkingSpot);
+        ticket.setVehicleRegNumber("ABCDEF");
+        fareCalculatorService.calculateFare(ticket);
+        assertEquals((0 * Fare.BIKE_RATE_PER_MINUTES), ticket.getPrice());
+    }
+	
 	public void calculateFareBikeWithDiscount(){
 			Date inTime = new Date();
 			inTime.setTime( System.currentTimeMillis() - (  60 * 60 * 1000) );// Reduction for a car parked one hour

@@ -32,6 +32,10 @@ public class ParkingService {
             ParkingSpot parkingSpot = getNextParkingNumberIfAvailable();
             if(parkingSpot !=null && parkingSpot.getId() > 0){
                 String vehicleRegNumber = getVehichleRegNumber();
+                final Ticket existingTicket = ticketDAO.getTicket (vehicleRegNumber);
+                if (existingTicket != null) {
+                	System.out.println("Welcome back! As a recurring user of our parking lot, you'll benefit from a 5% discount.");
+                }
                 parkingSpot.setAvailable(false);
                 parkingSpotDAO.updateParking(parkingSpot);//allot this parking space and mark it's availability as false
 

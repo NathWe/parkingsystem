@@ -22,10 +22,6 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.when;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.util.concurrent.TimeUnit;
 
 @ExtendWith(MockitoExtension.class)
 public class ParkingDataBaseIT {
@@ -47,7 +43,7 @@ public class ParkingDataBaseIT {
         dataBasePrepareService = new DataBasePrepareService();
     }
 
-	private Connection con;
+
 
     @BeforeEach
     private void setUpPerTest() throws Exception {
@@ -62,7 +58,7 @@ public class ParkingDataBaseIT {
     }
     
     @Test
-	public void testParkingACar1() {
+	public void testParkingACar() {
 		final ParkingService parkingService = new ParkingService(inputReaderUtil, parkingSpotDAO, ticketDAO);
 		parkingService.processIncomingVehicle();
 
@@ -77,8 +73,8 @@ public class ParkingDataBaseIT {
 	}
 
 	@Test
-	public void testParkingLotExit1() {
-		testParkingACar1();
+	public void testParkingLotExit() {
+		testParkingACar();
 		final ParkingService parkingService = new ParkingService(inputReaderUtil, parkingSpotDAO, ticketDAO);
 		parkingService.processExitingVehicle();
 

@@ -5,11 +5,7 @@ import java.util.concurrent.TimeUnit;
 import com.parkit.parkingsystem.constants.Fare;
 import com.parkit.parkingsystem.model.Ticket;
 import com.parkit.parkingsystem.dao.TicketDAO;
-/**
- * 
- * @author natha
- *
- */
+
 public class FareCalculatorService {
 
 	private final TicketDAO ticketDAO = new TicketDAO();
