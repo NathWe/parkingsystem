@@ -30,7 +30,7 @@ public class DataBaseTestConfig extends DataBaseConfig {
             try {
                 con.close();
                 logger.info("Closing DB connection");
-            } catch (SQLException e) {
+            } catch (final SQLException e) {
                 logger.error("Error while closing connection",e);
             }
         }
@@ -42,7 +42,7 @@ public class DataBaseTestConfig extends DataBaseConfig {
             try {
                 ps.close();
                 logger.info("Closing Prepared Statement");
-            } catch (SQLException e) {
+            } catch (final SQLException e) {
                 logger.error("Error while closing prepared statement",e);
             }
         }
@@ -54,7 +54,7 @@ public class DataBaseTestConfig extends DataBaseConfig {
             try {
                 rs.close();
                 logger.info("Closing Result Set");
-            } catch (SQLException e) {
+            } catch (final SQLException e) {
                 logger.error("Error while closing result set",e);
             }
         }
