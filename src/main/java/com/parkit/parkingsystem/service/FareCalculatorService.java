@@ -43,7 +43,5 @@ public class FareCalculatorService {
     	   double discountTicket = ticket.getPrice() * Fare.DISCOUNT_FOR_REGULAR_USER;
     	   ticket.setPrice(discountTicket);
        }
-
     }
-
 }

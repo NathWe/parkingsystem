@@ -22,8 +22,7 @@ public class ParkingSpotDAO {
         PreparedStatement ps = null;
         ResultSet rs = null;
         int result=-1;
-        
-        
+       
       
         	try {
             	con = dataBaseConfig.getConnection();

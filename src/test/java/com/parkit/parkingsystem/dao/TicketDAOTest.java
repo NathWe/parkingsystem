@@ -22,7 +22,6 @@ public class TicketDAOTest {
  public static void setUp() {
  ticketDAO = new TicketDAO();
  ticketDAO.dataBaseConfig = dataBaseTestConfig;
-
  dataBasePrepareService = new DataBasePrepareService();
  }
 

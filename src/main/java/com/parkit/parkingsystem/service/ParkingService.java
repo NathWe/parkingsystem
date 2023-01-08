@@ -99,7 +99,6 @@ public class ParkingService {
 		return null;
     }
 
-
     public ParkingSpot getNextParkingNumberIfAvailable(){
         int parkingNumber=0;
         ParkingSpot parkingSpot = null;

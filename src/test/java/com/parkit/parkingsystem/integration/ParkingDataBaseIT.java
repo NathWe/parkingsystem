@@ -96,6 +96,7 @@ when(inputReaderUtil.readSelection()).thenReturn(1);
 		int nextAvaibleSlot = parkingSpotDAO.getNextAvailableSlot(ParkingType.BIKE);
 		assertNotEquals(1, nextAvaibleSlot);
     }
+    
        
 	@Test
 	public void testParkingLotExit() throws Exception{
