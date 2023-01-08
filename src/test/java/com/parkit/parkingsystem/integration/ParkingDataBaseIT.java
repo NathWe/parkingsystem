@@ -23,6 +23,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertNotNull;
 import static org.mockito.Mockito.when;
 
 import java.sql.Connection;
@@ -75,7 +76,7 @@ when(inputReaderUtil.readSelection()).thenReturn(1);
 
 		
 		Ticket ticket = ticketDAO.getTicket("ABCDEF");	
-		AssertNotNull(ticket);
+		assertNotNull(ticket);
 		
 		int nextAvaibleSlot = parkingSpotDAO.getNextAvailableSlot(ParkingType.BIKE);
 		assertNotEquals(1, nextAvaibleSlot);
@@ -90,20 +91,12 @@ when(inputReaderUtil.readSelection()).thenReturn(1);
 
 		
 		Ticket ticket = ticketDAO.getTicket("ABCDEF");	
-		AssertNotNull(ticket);
+		assertNotNull(ticket);
 		
 		int nextAvaibleSlot = parkingSpotDAO.getNextAvailableSlot(ParkingType.BIKE);
 		assertNotEquals(1, nextAvaibleSlot);
     }
-    
-    
-	private void AssertNotNull(Ticket ticket) {
-
-		
-	}
-
-
-
+       
 	@Test
 	public void testParkingLotExit() throws Exception{
 		

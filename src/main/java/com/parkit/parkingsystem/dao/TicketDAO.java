@@ -26,8 +26,8 @@ public class TicketDAO {
 	
 
 
-	public void saveTicket(Ticket ticket) {
-		Connection con = null;
+	public boolean saveTicket(Ticket ticket) {
+
 		try {
 			con = dataBaseConfig.getConnection();
 			try (PreparedStatement ps = con.prepareStatement(DBConstants.SAVE_TICKET)){
@@ -42,18 +42,31 @@ public class TicketDAO {
 			 } else {
 				 ps.setTimestamp(5, null);
 				 }
-			ps.execute();
+			return ps.execute();
 			}	
 		} catch (final Exception ex) {
 			logger.error("Error fetching next available slot", ex);
 			
 		} finally {
-			dataBaseConfig.closeConnection(con);
+			
+			try { 
+				if (ps != null)
+					ps.close();
+			} catch (Exception e) {
+				logger.error("Error close resource PreparedStatement", e);
+			}
+			try {
+				if (con != null)
+					con.close();
+			} catch (Exception e) {
+				logger.error("Error close resource connaction", e);
+			}
 		}
+		return false;
 	}
 
 	public int getTicketOccurence(String vehicleRegNumber) {
-		 Connection con = null;
+
 		 int result = 0;
 
 		 try {
@@ -69,14 +82,32 @@ public class TicketDAO {
 		 } catch (Exception e) {
 		 logger.error("Error fetching ticket occurence", e);
 		 } finally {
-		 dataBaseConfig.closeConnection(con);
+			 try { 
+					if (rs != null)
+						rs.close();
+				} catch (Exception e) {
+					logger.error("Error close resource resultser", e);
+				}
+			 try { 
+					if (ps != null)
+						ps.close();
+				} catch (Exception e) {
+					logger.error("Error close resource resultser", e);
+				}
+				try {
+					if (con != null)
+						con.close();
+				} catch (Exception e) {
+					logger.error("Error close resource connaction", e);
+				}
 		 }
 		 return result;
 		 }
 	
 	public Ticket getTicket(String vehicleRegNumber) {
 		
-		Ticket ticket = null;
+
+		Ticket ticket = new Ticket();
 		
 		int ticketOccurence = getTicketOccurence(vehicleRegNumber);
 		try {
@@ -102,13 +133,30 @@ public class TicketDAO {
 		} catch (final Exception ex) {
 			logger.error("Error fetching next available slot", ex);
 		} finally {
-			dataBaseConfig.closeConnection(con);
+			 try { 
+					if (rs != null)
+						rs.close();
+				} catch (Exception e) {
+					logger.error("Error close resource resultser", e);
+				}
+			 try { 
+					if (ps != null)
+						ps.close();
+				} catch (Exception e) {
+					logger.error("Error close resource resultser", e);
+				}
+				try {
+					if (con != null)
+						con.close();
+				} catch (Exception e) {
+					logger.error("Error close resource connection", e);
+				}
 		}
 			return ticket;
 	}
 
 	public boolean updateTicket(Ticket ticket) {
-
+		
 		try {
 			con = dataBaseConfig.getConnection();
 			final PreparedStatement ps = con.prepareStatement(DBConstants.UPDATE_TICKET);
@@ -120,7 +168,18 @@ public class TicketDAO {
 		} catch (final Exception ex) {
 			logger.error("Error saving ticket info", ex);
 		} finally {
-			dataBaseConfig.closeConnection(con);
+			 try { 
+					if (ps != null)
+						ps.close();
+				} catch (Exception e) {
+					logger.error("Error close resource resultser", e);
+				}
+				try {
+					if (con != null)
+						con.close();
+				} catch (Exception e) {
+					logger.error("Error close resource connaction", e);
+				}
 		}
 		return false;
 	}

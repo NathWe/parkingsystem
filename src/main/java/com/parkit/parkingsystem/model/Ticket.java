@@ -2,6 +2,8 @@ package com.parkit.parkingsystem.model;
 
 import java.util.Date;
 
+import org.junit.Ignore;
+
 public class Ticket {
     private int id;
     private ParkingSpot parkingSpot;
@@ -10,7 +12,9 @@ public class Ticket {
     private Date inTime;
     private Date outTime;
     
-	public int getId() {
+    private boolean isAlreadyCame = false;
+    
+    public int getId() {
         return id;
     }
 
@@ -42,27 +46,31 @@ public class Ticket {
         this.price = price;
     }
 
+    @Ignore
     public Date getInTime() {
-        return inTime;
+        return inTime != null ? (Date) inTime.clone() : null;
     }
 
+    @Ignore
     public void setInTime(Date inTime) {
-        this.inTime = inTime;
+        this.inTime = inTime != null ? (Date) inTime.clone() : null;
     }
 
+@Ignore
     public Date getOutTime() {
-        return outTime;
+        return outTime != null ? (Date) outTime.clone() : null;
     }
 
+@Ignore
     public void setOutTime(Date outTime) {
-        this.outTime = outTime;
+        this.outTime = outTime != null ? (Date) outTime.clone() : null;
     }
 
     public boolean isAlreadyCame() {
-    	return isAlreadyCame();
+        return isAlreadyCame;
     }
-	public void setAlreadyCame(boolean alreadyCame) {
-	}
 
-
+    public void setAlreadyCame(boolean alreadyCame) {
+        isAlreadyCame = alreadyCame;
+    }
 }

@@ -11,10 +11,11 @@ import com.parkit.parkingsystem.util.InputReaderUtil;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Date;
 
 public class ParkingService {
@@ -59,14 +60,17 @@ public class ParkingService {
                 System.out.println("Generated Ticket and saved in DB");
                 System.out.println("Please park your vehicle in spot number:"+parkingSpot.getId());
                 System.out.println("Recorded in-time for vehicle number:"+vehicleRegNumber+" is:"+inTime);
-            }
+            } else
+            	System.out.println("Error, a vehicle with the same registration number is already in the parking. Process cancelled");
         }catch(Exception e){
             logger.error("Unable to process incoming vehicle",e);
         }
     }
 
-    private int recurringUsers(String vehicleRegNumber) throws Exception {
+    private int recurringUsers(String vehicleRegNumber) throws IOException, ClassNotFoundException, SQLException {
     	Connection con = null;
+    	ResultSet rs = null;
+    	
     	DataBaseConfig dataBaseConfig = new DataBaseConfig();
     	
     	con= dataBaseConfig.getConnection();
@@ -75,15 +79,26 @@ public class ParkingService {
     	
     	PreparedStatement statement = con.prepareStatement(sql);
     	statement.setString(1, vehicleRegNumber);
-    	ResultSet rs = statement.executeQuery();
+    	rs = statement.executeQuery();
     	rs.next();
-    	
-    	return rs.getInt("total");
+
+
+		    	return rs.getInt("total");
+
     }
-    private String getVehicleRegNumber() throws Exception  {
+    
+    private String getVehicleRegNumber() throws IOException {
     	System.out.println("Please type the vehicle registration number and press enter key");
-    	return inputReaderUtil.readVehicleRegistrationNumber();
+    	
+    	try {
+			return inputReaderUtil.readVehicleRegistrationNumber();
+		} catch (Exception e) {
+
+			e.printStackTrace();
+		}
+		return null;
     }
+
 
     public ParkingSpot getNextParkingNumberIfAvailable(){
         int parkingNumber=0;
