@@ -22,7 +22,7 @@ public class ParkingSpotDAO {
         PreparedStatement ps = null;
         ResultSet rs = null;
         int result=-1;
-       
+      
       
         	try {
             	con = dataBaseConfig.getConnection();
@@ -88,9 +88,8 @@ public class ParkingSpotDAO {
         			con.close();
        }catch (Exception e) {
     	logger.error("Error updateParking", e);
+        	}
         }
     }
-
-}
 }
 

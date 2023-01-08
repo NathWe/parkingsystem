@@ -34,7 +34,6 @@ public class FareCalculatorService {
                 throw new IllegalArgumentException("Unkown Parking Type");
         }
 
-
 	// Reduce of 5% when the user is already came
       
        

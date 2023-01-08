@@ -81,10 +81,8 @@ public class ParkingService {
     	statement.setString(1, vehicleRegNumber);
     	rs = statement.executeQuery();
     	rs.next();
-
-
+    	
 		    	return rs.getInt("total");
-
     }
     
     private String getVehicleRegNumber() throws IOException {

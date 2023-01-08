@@ -56,12 +56,12 @@ public class Ticket {
         this.inTime = inTime != null ? (Date) inTime.clone() : null;
     }
 
-@Ignore
+    @Ignore
     public Date getOutTime() {
         return outTime != null ? (Date) outTime.clone() : null;
     }
 
-@Ignore
+    @Ignore
     public void setOutTime(Date outTime) {
         this.outTime = outTime != null ? (Date) outTime.clone() : null;
     }

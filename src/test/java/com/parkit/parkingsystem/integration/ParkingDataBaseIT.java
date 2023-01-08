@@ -29,9 +29,6 @@ import static org.mockito.Mockito.when;
 import java.sql.Connection;
 import java.sql.Date;
 
-
-
-
 @ExtendWith(MockitoExtension.class)
 public class ParkingDataBaseIT {
 
@@ -52,8 +49,6 @@ public class ParkingDataBaseIT {
         ticketDAO.dataBaseConfig = dataBaseTestConfig;
         dataBasePrepareService = new DataBasePrepareService();
     }
-
-
 
     @BeforeEach
     private void setUpPerTest() throws Exception {
@@ -96,8 +91,7 @@ when(inputReaderUtil.readSelection()).thenReturn(1);
 		int nextAvaibleSlot = parkingSpotDAO.getNextAvailableSlot(ParkingType.BIKE);
 		assertNotEquals(1, nextAvaibleSlot);
     }
-    
-       
+         
 	@Test
 	public void testParkingLotExit() throws Exception{
 		

@@ -30,6 +30,7 @@ public class InputReaderUtil {
                 throw new IllegalArgumentException("Invalid input provided");
             }
             return vehicleRegNumber;
+    
             
         } catch(Exception e){
             logger.error("Error while reading user input from Shell", e);
