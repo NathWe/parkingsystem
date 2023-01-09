@@ -27,10 +27,10 @@ public class InputReaderUtil {
         try {
             String vehicleRegNumber= scan.nextLine();
             if(vehicleRegNumber == null || vehicleRegNumber.trim().length()==0) {
-                throw new IllegalArgumentException("Invalid input provided");
+                throw new IllegalArgumentException("Invalid input provided"); 
             }
             return vehicleRegNumber;
-    
+     
             
         } catch(Exception e){
             logger.error("Error while reading user input from Shell", e);

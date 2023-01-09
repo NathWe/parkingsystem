@@ -133,7 +133,7 @@ public class TicketDAO {
 		} catch (final Exception ex) {
 			logger.error("Error fetching next available slot", ex);
 		} finally {
-		
+		 
 			 try { 
 					if (rs != null)
 						rs.close();

@@ -61,7 +61,7 @@ public class ParkingDataBaseIT {
     	dataBaseTestConfig.closeConnection(con);
 
     }
-    
+
     @Test
 	public void testParkingACar() throws Exception{
 when(inputReaderUtil.readSelection()).thenReturn(1);
@@ -73,7 +73,7 @@ when(inputReaderUtil.readSelection()).thenReturn(1);
 		Ticket ticket = ticketDAO.getTicket("ABCDEF");	
 		assertNotNull(ticket);
 		
-		int nextAvaibleSlot = parkingSpotDAO.getNextAvailableSlot(ParkingType.BIKE);
+		int nextAvaibleSlot = parkingSpotDAO.getNextAvailableSlot(ParkingType.CAR);
 		assertNotEquals(1, nextAvaibleSlot);
     }
 
