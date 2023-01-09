@@ -29,6 +29,9 @@ import static org.mockito.Mockito.when;
 import java.sql.Connection;
 import java.sql.Date;
 
+
+
+
 @ExtendWith(MockitoExtension.class)
 public class ParkingDataBaseIT {
 
@@ -50,6 +53,8 @@ public class ParkingDataBaseIT {
         dataBasePrepareService = new DataBasePrepareService();
     }
 
+
+
     @BeforeEach
     private void setUpPerTest() throws Exception {
         when(inputReaderUtil.readVehicleRegistrationNumber()).thenReturn("ABCDEF");
@@ -61,7 +66,7 @@ public class ParkingDataBaseIT {
     	dataBaseTestConfig.closeConnection(con);
 
     }
-
+    
     @Test
 	public void testParkingACar() throws Exception{
 when(inputReaderUtil.readSelection()).thenReturn(1);
@@ -73,7 +78,7 @@ when(inputReaderUtil.readSelection()).thenReturn(1);
 		Ticket ticket = ticketDAO.getTicket("ABCDEF");	
 		assertNotNull(ticket);
 		
-		int nextAvaibleSlot = parkingSpotDAO.getNextAvailableSlot(ParkingType.CAR);
+		int nextAvaibleSlot = parkingSpotDAO.getNextAvailableSlot(ParkingType.BIKE);
 		assertNotEquals(1, nextAvaibleSlot);
     }
 
@@ -91,7 +96,8 @@ when(inputReaderUtil.readSelection()).thenReturn(1);
 		int nextAvaibleSlot = parkingSpotDAO.getNextAvailableSlot(ParkingType.BIKE);
 		assertNotEquals(1, nextAvaibleSlot);
     }
-         
+    
+       
 	@Test
 	public void testParkingLotExit() throws Exception{
 		
