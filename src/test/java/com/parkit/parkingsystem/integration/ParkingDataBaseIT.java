@@ -113,10 +113,10 @@ when(inputReaderUtil.readSelection()).thenReturn(1);
 		ticketDAO.saveTicket(t);
 		parkingSpotDAO.updateParking(t.getParkingSpot());
 		
-		//WHEN
+		//When 
 		parkingService.processExitingVehicle();
 		
-		//THEN
+		//Then
 		Ticket ticket = ticketDAO.getTicket("ABCDEF");
 		assertNotEquals(null, ticket.getOutTime());
 		assertNotEquals(0, ticket.getPrice());

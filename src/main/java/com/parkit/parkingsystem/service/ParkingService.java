@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
+
 import java.util.Date;
 
 public class ParkingService {
@@ -67,9 +67,11 @@ public class ParkingService {
         }
     }
 
-    private int recurringUsers(String vehicleRegNumber) throws IOException, ClassNotFoundException, SQLException {
+    private int recurringUsers(String vehicleRegNumber) {
     	Connection con = null;
     	ResultSet rs = null;
+    	try {
+    		
     	
     	DataBaseConfig dataBaseConfig = new DataBaseConfig();
     	
@@ -83,6 +85,26 @@ public class ParkingService {
     	rs.next();
     	
 		    	return rs.getInt("total");
+		    	
+		    	} catch (final Exception ex) {
+					logger.error("Error fetching next available slot", ex);
+					
+				} finally {
+					
+					try { 
+						if (rs != null)
+							rs.close();
+					} catch (Exception e) {
+						logger.error("Error close resource resultser", e);
+					}
+					try {
+						if (con != null)
+							con.close();
+					} catch (Exception e) {
+						logger.error("Error close resource connaction", e);
+					}
+				}
+    	return 0;
     }
     
     private String getVehicleRegNumber() throws IOException {
